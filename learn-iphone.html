@@ -24,7 +24,7 @@ Notes:
     <link rel="stylesheet" href="static/style.css">
     <script src="static/main.js" defer></script>
 </head>
-<body class="bg-slate-900 text-slate-200" data-mailto-to="zfyant@zohomail.com" data-ga-id="G-470VX33FJM">
+<body class="bg-slate-900 text-slate-200" data-mailto-to="zfyant@zohomail.com" data-ga-id="G-DSFVRJ02TV">
     <!-- Shared Navigation (single source of truth) -->
     <nav id="site-nav" class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-sm shadow-sm border-b border-slate-800" aria-label="Site Navigation">
         <div id="nav-inner" class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
@@ -38,6 +38,7 @@ Notes:
                 <a href="index.html" class="transition hover:text-heal-teal" >Home</a>
                 <a href="about.html" class="transition hover:text-heal-teal" >My Story</a>
                 <a href="learn.html" class="transition text-heal-teal border-b-2 border-teal-700 pb-1" aria-current="page">Learn</a>
+                <a href="pricing.html" class="transition hover:text-heal-teal" >Pricing</a>
             </div>
             <button id="open-contact-modal" data-open-contact class="bg-heal-teal hover-heal-teal text-white font-bold py-2 px-5 rounded-full btn-shadow transition duration-300 flex items-center gap-2">
                 <i class="fa-solid fa-phone"></i>
@@ -48,8 +49,23 @@ Notes:
             <a href="about.html" class="">My Story</a>
             <span class="text-slate-600">|</span>
             <a href="learn.html" class="text-heal-teal">Learn</a>
+            <span class="text-slate-600">|</span>
+            <a href="pricing.html" class="">Pricing</a>
         </div>
     </nav>
+
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-20">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+            <path d="M10 10h80v80h-80z" fill="none" />
+            <path d="M20 20h60v60h-60z" fill="none" stroke="#22d3ee" stroke-width="0.5" />
+            <path d="M50 20v20 M50 60v20 M20 50h20 M60 50h20" stroke="#22d3ee" stroke-width="1" />
+            <circle cx="50" cy="50" r="3" fill="#22d3ee" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#circuit)" />
+        </svg>
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
+    </div>
 
     <div id="contact-modal" class="fixed inset-0 z-50 items-center justify-center bg-black/80 backdrop-blur-sm p-4 hidden" aria-label="Contact Modal">
   <div id="contact-card" class="bg-slate-900 border border-cyan-500/50 rounded-2xl w-full max-w-md p-6 shadow-lg relative">
@@ -79,7 +95,7 @@ Notes:
           <div class="text-xs uppercase text-slate-500 font-bold">Facebook</div>
           <div class="text-xs text-slate-400">Typical reply: ~1 hour</div>
         </div>
-        <a id="contact-messenger" href="https://m.me/zechsupport" target="_blank" class="block w-full px-4 py-3 rounded-xl border-2 border-blue-500 text-slate-200 bg-slate-900 hover:bg-blue-600/15 hover:border-blue-400 transition flex items-center gap-2 justify-center"><i class="fa-brands fa-facebook-messenger text-blue-400"></i> Chat on Messenger</a>
+        <a id="contact-messenger" href="https://m.me/917272218127675" target="_blank" class="block w-full px-4 py-3 rounded-xl border-2 border-blue-500 text-slate-200 bg-slate-900 hover:bg-blue-600/15 hover:border-blue-400 transition flex items-center gap-2 justify-center"><i class="fa-brands fa-facebook-messenger text-blue-400"></i> Chat on Messenger</a>
       </div>
     </div>
     <form id="contact-callback" class="bg-slate-800 p-4 rounded-xl border border-slate-700 hidden" aria-label="Request Callback Form">
@@ -116,7 +132,8 @@ Notes:
 </div>
 
     <!-- Page-specific content is injected here by child templates -->
-    
+    <main id="main-content" class="relative z-10">
+      
 <main id="learn-iphone" class="max-w-3xl mx-auto px-4 py-16">
   <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">iPhone Settings Explained</h1>
   <p class="text-slate-400 mb-8">Adjust text size, sound, and helpful accessibility features.</p>
@@ -145,6 +162,7 @@ Notes:
   </div>
 </main>
 
+    </main>
 
     <!-- Shared Footer -->
     <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
