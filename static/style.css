@@ -1,0 +1,40 @@
+/*
+Global Styles (Dark Theme)
+
+Summary:
+- Typography and base colors for dark UI
+- Utilities for accessibility and shadows
+- Brand teal accents and gradient helper
+
+Maintenance:
+- Tailwind provides most classes; these utilities complement it.
+- If theme colors shift, update values here and in templates.
+*/
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+h1, h2, h3, .brand-font {
+  font-family: 'Quicksand', sans-serif;
+}
+/* Accessibility */
+.text-senior {
+  font-size: 1.15rem;
+  line-height: 1.8rem;
+}
+/* Shadows */
+.btn-shadow {
+  box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.25);
+}
+/* Brand */
+.bg-heal-teal { background-color: #0d9488; }
+.text-heal-teal { color: #0d9488; }
+.hover-heal-teal:hover { background-color: #0f766e; }
+/* Dark text helper */
+.text-ocean-dark { color: #e5e7eb; }
+/* Gradient helper */
+.bg-water-gradient {
+  background: linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
+}
+html { scroll-behavior: smooth; }
