@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friendly Tech Help at Home for Seniors</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --bg-alt: #ffffff;
+      --primary: #2563eb;
+      --primary-soft: #dbe8ff;
+      --accent: #16a34a;
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --border-soft: #e5e7eb;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e0edff 0, #f4f7fb 45%, #eef4ff 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(244, 247, 251, 0.88);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffffff, #bfdbfe);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+      font-size: 0.95rem;
+    }
+
+    .nav-cta span.icon {
+      font-size: 1.1rem;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .shell {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 3.5rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 2.2rem;
+      align-items: center;
+      padding-top: 1.2rem;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      width: fit-content;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 3.1vw + 1.4rem, 3.1rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    h1 span.highlight {
+      background: linear-gradient(120deg, #2563eb, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+    }
+
+    .hero-checks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-soft);
+      font-size: 0.9rem;
+    }
+
+    .chip span.icon {
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-top: 0.8rem;
+    }
+
+    .btn-primary {
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.45);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-secondary {
+      padding: 0.8rem 1.2rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--border-soft);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .reassure {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .reassure span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, #ffffff, #e0edff);
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+      padding: 1.5rem 1.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      background: radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.18), transparent 55%),
+                  radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.16), transparent 55%);
+      opacity: 0.9;
+      z-index: -1;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .hero-card-pill {
+      font-size: 0.8rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.82);
+      color: #e5e7eb;
+    }
+
+    .hero-avatar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 0.15rem 0 0.75rem;
+    }
+
+    .avatar-stack {
+      display: inline-flex;
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: #eff6ff;
+      border: 2px solid #e5edff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-left: -8px;
+    }
+
+    .avatar:first-child {
+      margin-left: 0;
+    }
+
+    .hero-card-body {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 22px;
+      padding: 1rem 1rem 0.9rem;
+      border: 1px solid rgba(209, 213, 219, 0.8);
+    }
+
+    .hero-card-rows {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .hero-card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-card-row span.label {
+      color: var(--text-muted);
+    }
+
+    .hero-card-row span.value {
+      font-weight: 600;
+    }
+
+    .hero-card-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .dot-row {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+    }
+
+    .dot-row span {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.75);
+    }
+
+    .section {
+      margin-top: 3.1rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .section-kicker {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 28rem;
+    }
+
+    .pill-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.24rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    .card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 1rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.03);
+    }
+
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-soft);
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+    }
+
+    .card-body {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .step {
+      position: relative;
+      padding: 1rem 1rem 0.95rem;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, #ffffff, #eff6ff);
+      border: 1px solid rgba(191, 219, 254, 0.8);
+      box-shadow: 0 16px 38px rgba(148, 163, 184, 0.25);
+    }
+
+    .step-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: #1d4ed8;
+      color: white;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .step-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      font-size: 0.98rem;
+    }
+
+    .step-body {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .step-note {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: #15803d;
+      background: rgba(22, 163, 74, 0.08);
+      padding: 0.4rem 0.55rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .price-card {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid var(--border-soft);
+      padding: 1.4rem;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+    }
+
+    .price-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .price-main {
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+
+    .price-main span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .price-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .price-list {
+      list-style: none;
+      margin: 0.5rem 0 1rem;
+      padding: 0;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .price-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .price-list span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 2px solid #22c55e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .guarantee {
+      font-size: 0.8rem;
+      color: #166534;
+      background: #ecfdf3;
+      border-radius: 999px;
+      padding: 0.4rem 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.25rem;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      padding: 0.8rem 0.9rem;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      color: var(--text-muted);
+    }
+
+    .contact {
+      margin-top: 3rem;
+      background: linear-gradient(135deg, #1d4ed8, #22c55e);
+      border-radius: 28px;
+      padding: 1.5rem 1.4rem 1.4rem;
+      color: #f9fafb;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.45);
+    }
+
+    .contact h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .contact-list {
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .contact-list span.label {
+      opacity: 0.85;
+    }
+
+    .contact-form {
+      background: rgba(15, 23, 42, 0.22);
+      border-radius: 20px;
+      padding: 1.1rem 1rem;
+      border: 1px solid rgba(15, 23, 42, 0.35);
+      backdrop-filter: blur(10px);
+    }
+
+    .field {
+      margin-bottom: 0.7rem;
+      font-size: 0.88rem;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      padding: 0.55rem 0.55rem;
+      border-radius: 10px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      font: inherit;
+      background: rgba(248, 250, 252, 0.96);
+    }
+
+    .field small {
+      display: block;
+      margin-top: 0.15rem;
+      opacity: 0.85;
+      font-size: 0.78rem;
+    }
+
+    .contact-submit {
+      margin-top: 0.5rem;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.98rem;
+      background: #f9fafb;
+      color: #111827;
+      cursor: pointer;
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.7);
+    }
+
+    .contact-submit:hover {
+      filter: brightness(1.02);
+    }
+
+    footer {
+      padding: 1rem 1.25rem 1.6rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 880px) {
+      .hero,
+      .grid-3,
+      .steps,
+      .split,
+      .contact {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 1.5rem;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      header {
+        position: static;
+      }
+
+      .nav {
+        padding-inline: 1rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .shell {
+        padding-inline: 1rem;
+      }
+
+      .hero-card {
+        border-radius: 22px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact {
+        border-radius: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <div class="brand-badge">🖥️</div>
+          <div>
+            <div>GentleTech at Home</div>
+            <div style="font-size:0.7rem; color:var(--text-muted);">Patient tech help for older adults</div>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#how">How it works</a>
+          <a href="#pricing">Pricing</a>
+          <button class="nav-cta" onclick="scrollToContact()">
+            <span class="icon">📞</span>
+            <span>Request a friendly call</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="shell">
+        <section class="hero">
+          <div class="hero-text">
+            <div class="eyebrow">👵👴 Tech help that comes to you</div>
+            <h1>
+              In‑home <span class="highlight">patient tech support</span><br />
+              for older adults & families.
+            </h1>
+            <p class="hero-sub">
+              We visit your home, sit side‑by‑side, and make everyday technology feel calm, safe, and simple.
+              No rush. No jargon. Just one‑to‑one help you can actually understand.
+            </p>
+            <div class="hero-checks">
+              <div class="chip"><span class="icon">✅</span> Device setup & Wi‑Fi fixes</div>
+              <div class="chip"><span class="icon">✅</span> Phone, tablet & computer lessons</div>
+              <div class="chip"><span class="icon">✅</span> Online safety & scams guidance</div>
+              <div class="chip"><span class="icon">✅</span> Support for family caregivers</div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn-primary" onclick="scrollToContact()">
+                Book a home visit
+                <span>→</span>
+              </button>
+              <button class="btn-secondary" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">
+                See how it works
+              </button>
+              <div class="reassure">
+                <span class="dot"></span>
+                No contracts · Simple hourly pricing
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="Example of a visit">
+            <div class="hero-card-header">
+              <div class="hero-card-title">
+                <span>Today’s visit</span>
+              </div>
+              <div class="hero-card-pill">In‑home · 60 minutes</div>
+            </div>
+
+            <div class="hero-avatar-row">
+              <div class="avatar-stack" aria-hidden="true">
+                <div class="avatar">👵</div>
+                <div class="avatar">👨‍💻</div>
+                <div class="avatar">👦</div>
+              </div>
+              <div style="font-size:0.9rem;">
+                <strong>Mary (72)</strong> learns to video call her grandson, and we tidy her passwords along the way.
+              </div>
+            </div>
+
+            <div class="hero-card-body">
+              <div class="hero-card-rows">
+                <div class="hero-card-row">
+                  <span class="label">Devices</span>
+                  <span class="value">iPad · Android phone · Smart TV</span>
+                </div>
+                <div class="hero-card-row">
+                  <span class="label">Goals</span>
+                  <span class="value">Video calls · email · safe browsing</span>
+                </div>
+                <div class="hero-card-row">
+                  <span class="label">Pace</span>
+                  <span class="value">One step at a time. Written notes left.</span>
+                </div>
+              </div>
+              <div class="hero-card-foot">
+                <div>
+                  First visit? We start with a gentle tech check‑up of the whole home.
+                </div>
+                <div class="dot-row" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section id="services" class="section" aria-labelledby="services-title">
+          <div class="section-header">
+            <div>
+              <div class="pill-label">🧰 What we can help with</div>
+              <h2 id="services-title" class="section-title">Clear, patient help for everyday tech problems.</h2>
+            </div>
+            <p class="section-kicker">
+              Whether it’s a frozen tablet, a confusing new phone, or getting photos off a camera, we’ll sit with you until it makes sense.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <div class="card-icon">📱</div>
+              <h3 class="card-title">Phones, tablets & computers</h3>
+              <p class="card-body">
+                We help with new device setup, updates, apps, email, photos, passwords, backups and more. We write things down so they’re easy to follow later.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">🏠</div>
+              <h3 class="card-title">Wi‑Fi & smart home</h3>
+              <p class="card-body">
+                Slow internet, dropped connections or a confusing smart TV? We tidy cables, check Wi‑Fi strength, and help you use voice assistants safely.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">🛡️</div>
+              <h3 class="card-title">Safety & scams</h3>
+              <p class="card-body">
+                We review common scam emails, calls and pop‑ups, adjust security settings, and show you simple rules to stay safe online.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="how" class="section" aria-labelledby="how-title">
+          <div class="section-header">
+            <div>
+              <div class="pill-label">🚗 How it works</div>
+              <h2 id="how-title" class="section-title">A calm, three‑step visit from a patient helper.</h2>
+            </div>
+            <p class="section-kicker">
+              We work at your pace, with clear explanations and no pressure to buy any extra services or equipment.
+            </p>
+          </div>
+
+          <div class="steps">
+            <article class="step">
+              <div class="step-number">1</div>
+              <h3 class="step-title">We listen first</h3>
+              <p class="step-body">
+                Before touching any device, we ask what’s frustrating, what feels scary, and what you’d like to be able to do — in plain language.
+              </p>
+              <div class="step-note">💬 Family welcome to join the conversation.</div>
+            </article>
+
+            <article class="step">
+              <div class="step-number">2</div>
+              <h3 class="step-title">We fix & teach, side‑by‑side</h3>
+              <p class="step-body">
+                We solve urgent issues, then slowly show you how things work. You can ask the same question as many times as you like.
+              </p>
+              <div class="step-note">✍️ We leave simple written notes behind.</div>
+            </article>
+
+            <article class="step">
+              <div class="step-number">3</div>
+              <h3 class="step-title">We leave you calmer</h3>
+              <p class="step-body">
+                At the end, we review what we did and suggest gentle next steps. No surprise fees, no confusing tech talk.
+              </p>
+              <div class="step-note">📅 Optional follow‑up visits available.</div>
+            </article>
+          </div>
+        </section>
+
+        <section id="pricing" class="section" aria-labelledby="pricing-title">
+          <div class="section-header">
+            <div>
+              <div class="pill-label">💲 Simple pricing</div>
+              <h2 id="pricing-title" class="section-title">Straightforward, no‑surprise home visit pricing.</h2>
+            </div>
+            <p class="section-kicker">
+              We keep pricing easy so you can focus on getting comfortable with technology, not calculating hidden costs.
+            </p>
+          </div>
+
+          <div class="split">
+            <article class="price-card" aria-label="Pricing">
+              <div class="price-header">
+                <div>
+                  <div style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); font-weight:600;">Standard home visit</div>
+                  <div class="price-main">$XX / hour <span>(1 hour minimum)</span></div>
+                </div>
+                <div class="hero-card-pill" style="background:#22c55e;">No surprise add‑on fees</div>
+              </div>
+
+              <p class="price-note">
+                Travel within our local area is included. Before your visit, we’ll confirm the total expected time and cost.
+              </p>
+
+              <ul class="price-list">
+                <li><span class="icon">✓</span> Help with as many devices as time allows</li>
+                <li><span class="icon">✓</span> Gentle teaching at your pace</li>
+                <li><span class="icon">✓</span> Written summary of what we covered</li>
+                <li><span class="icon">✓</span> Optional check‑in by phone after the visit</li>
+              </ul>
+
+              <button class="btn-primary" style="width:100%; justify-content:center; margin-top:0.3rem;" onclick="scrollToContact()">
+                Check availability in my area
+              </button>
+
+              <div class="guarantee">
+                <span>🕊️</span>
+                If we can’t improve things on the first visit, we’ll discount your next session.
+              </div>
+            </article>
+
+            <aside>
+              <div class="pill-label">👨‍👩‍👧‍👦 For families & caregivers</div>
+              <div class="faq-list">
+                <div class="faq-item">
+                  <div class="faq-q">Can I book this for my parent or relative?</div>
+                  <div class="faq-a">
+                    Yes. Many of our visits are arranged by adult children or caregivers. You’re welcome to join the session in person or via video call.
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <div class="faq-q">What if my loved one is nervous about strangers?</div>
+                  <div class="faq-a">
+                    We introduce ourselves gently, explain exactly what we’ll do, and check in often. You can speak with us first to decide if we’re a good fit.
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <div class="faq-q">Do you sell computers, phones or internet plans?</div>
+                  <div class="faq-a">
+                    No. We’re not salespeople and don’t earn commission from any products. Our only job is to make what you already have feel easier and safer.
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="contact" class="contact" aria-labelledby="contact-title">
+          <div>
+            <h2 id="contact-title">Tell us who needs a hand, and we’ll call you.</h2>
+            <p>
+              Share a few details and we’ll reach out to schedule a gentle, no‑pressure call. We’ll talk through your situation and suggest a visit that fits.
+            </p>
+            <div class="contact-list">
+              <div><strong>Hours:</strong> Weekdays, 9am–5pm</div>
+              <div><strong>Service area:</strong> [Your city / region here]</div>
+              <div><strong>Phone:</strong> (XXX) XXX‑XXXX</div>
+            </div>
+          </div>
+
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will be in touch shortly.');">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" type="text" name="name" required />
+            </div>
+            <div class="field">
+              <label for="relation">Who are you contacting us about?</label>
+              <select id="relation" name="relation">
+                <option value="self">Myself</option>
+                <option value="parent">My parent</option>
+                <option value="relative">Another relative</option>
+                <option value="client">Client / person I care for</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="phone">Best phone number</label>
+              <input id="phone" type="tel" name="phone" required />
+              <small>We’ll only use this to call or text you about your visit.</small>
+            </div>
+            <div class="field">
+              <label for="city">City or neighborhood</label>
+              <input id="city" type="text" name="city" />
+            </div>
+            <div class="field">
+              <label for="message">What’s going on? (A few sentences is perfect.)</label>
+              <textarea id="message" name="message" rows="3" placeholder="For example: Mom just got a new iPhone and iPad and is overwhelmed. She mostly wants to call, text, see photos and avoid scams."></textarea>
+            </div>
+            <button class="contact-submit" type="submit">Send my request</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> GentleTech at Home. All rights reserved.</div>
+        <div>Not an emergency service. For urgent safety issues, contact local authorities.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function scrollToContact() {
+      const section = document.getElementById('contact');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
