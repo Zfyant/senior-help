@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const gaId = document.body.getAttribute('data-ga-id') || '';
   const initGA = (id) => {
     if (!id) return;
+    if (typeof window.gtag === 'function') return;
     const s = document.createElement('script');
     s.async = true;
     s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
@@ -175,6 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (contactModal) {
         contactModal.classList.remove('hidden');
         contactModal.classList.add('flex');
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'contact_open', { source: 'button' });
+        }
       }
     });
   });
@@ -183,12 +187,18 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       contactModal.classList.remove('hidden');
       contactModal.classList.add('flex');
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'contact_open', { source: 'nav' });
+      }
     });
   }
   if (contactClose && contactModal) {
     contactClose.addEventListener('click', () => {
       contactModal.classList.add('hidden');
       contactModal.classList.remove('flex');
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'contact_close', { method: 'button' });
+      }
     });
   }
   if (contactModal) {
@@ -196,6 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target === contactModal) {
         contactModal.classList.add('hidden');
         contactModal.classList.remove('flex');
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'contact_close', { method: 'backdrop' });
+        }
       }
     });
   }
@@ -219,9 +232,37 @@ document.addEventListener('DOMContentLoaded', () => {
       tabCallChat.classList.remove(...inactiveClasses);
       tabCallChat.classList.add(...activeClasses);
     }
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'contact_tab_change', { tab: which });
+    }
   };
   if (tabCallChat) tabCallChat.addEventListener('click', () => switchTab('callchat'));
   if (tabCallback) tabCallback.addEventListener('click', () => switchTab('callback'));
+
+  const contactCall = document.getElementById('contact-call');
+  const contactText = document.getElementById('contact-text');
+  const contactMessenger = document.getElementById('contact-messenger');
+  if (contactCall) {
+    contactCall.addEventListener('click', () => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'contact_call_click', { dest: 'tel' });
+      }
+    });
+  }
+  if (contactText) {
+    contactText.addEventListener('click', () => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'contact_text_click', { dest: 'sms' });
+      }
+    });
+  }
+  if (contactMessenger) {
+    contactMessenger.addEventListener('click', () => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'contact_messenger_click', { dest: 'messenger' });
+      }
+    });
+  }
 
   if (cbForm) {
     cbForm.addEventListener('submit', (e) => {
@@ -229,6 +270,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = document.getElementById('cb-name')?.value || '';
       const phone = document.getElementById('cb-phone')?.value || '';
       const msg = document.getElementById('cb-message')?.value || '';
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'contact_callback_submit', {
+          name_present: !!name,
+          phone_present: !!phone,
+          message_length: msg.length
+        });
+      }
       const subject = encodeURIComponent(`Call Back Request from ${name}`);
       const body = encodeURIComponent(`Phone: ${phone}\n\nMessage:\n${msg}`);
       const mailtoTo = document.body.getAttribute('data-mailto-to') || '';
